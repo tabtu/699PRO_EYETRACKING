@@ -15,7 +15,7 @@ def detectFaces(image_name):
         result.append((x, y, x+width, y+height))
     return result
 
-
+print("mission start")
 
 cap = cv2.VideoCapture(0)
 while(1):
