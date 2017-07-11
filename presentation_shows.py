@@ -1,3 +1,4 @@
+
 import numpy as np
 import cv2
 from PIL import Image, ImageDraw
@@ -6,7 +7,7 @@ cv2.namedWindow('cap')
 cap = cv2.VideoCapture(0)
 success, frame = cap.read()
 #color = (0, 0, 0)
-face_cascade = cv2.CascadeClassifier("data/haarcascades/haarcascade_frontalface_alt.xml")
+#face_cascade = cv2.CascadeClassifier("data/haarcascades/haarcascade_frontalface_alt.xml")
 
 while(success):
     success, frame = cap.read()

@@ -13,7 +13,7 @@ from common import clock, draw_str
 
 
 def detect(img, cascade):
-    rects = cascade.detectMultiScale(img, scaleFactor=1.3, minNeighbors=4, minSize=(30, 30),
+    rects = cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(20, 20),
                                      flags=cv2.CASCADE_SCALE_IMAGE)
     if len(rects) == 0:
         return []
@@ -34,8 +34,8 @@ if __name__ == '__main__':
     except:
         video_src = 0
     args = dict(args)
-    cascade_fn = args.get('--cascade', "../../data/haarcascades/haarcascade_frontalface_alt.xml")
-    nested_fn  = args.get('--nested-cascade', "../../data/haarcascades/haarcascade_eye.xml")
+    cascade_fn = args.get('--cascade', "../data/haarcascades/haarcascade_frontalface_alt.xml")
+    nested_fn  = args.get('--nested-cascade', "../data/haarcascades/haarcascade_eye.xml")
 
     cascade = cv2.CascadeClassifier(cascade_fn)
     nested = cv2.CascadeClassifier(nested_fn)
@@ -51,16 +51,16 @@ if __name__ == '__main__':
         rects = detect(gray, cascade)
         vis = img.copy()
         draw_rects(vis, rects, (0, 255, 0))
-        # if not nested.empty():
-        #     for x1, y1, x2, y2 in rects:
-        #         roi = gray[y1:y2, x1:x2]
-        #         vis_roi = vis[y1:y2, x1:x2]
-        #         subrects = detect(roi.copy(), nested)
-        #         draw_rects(vis_roi, subrects, (255, 0, 0))
-        # dt = clock() - t
-        #
-        # draw_str(vis, (20, 20), 'time: %.1f ms' % (dt*1000))
-        cv2.imshow('facedetect', vis)
+        if not nested.empty():
+            for x1, y1, x2, y2 in rects:
+                roi = gray[y1:y2, x1:x2]
+                vis_roi = vis[y1:y2, x1:x2]
+                subrects = detect(roi.copy(), nested)
+                draw_rects(vis_roi, subrects, (255, 0, 0))
+                for x3, y3, x4, y4 in subrects:
+                    eyeroi = gray[y3:y4, x3:x4]
+                    cv2.imshow('eyes', eyeroi)
+        cv2.imshow('face', vis)
 
         if cv2.waitKey(5) == 27:
             break

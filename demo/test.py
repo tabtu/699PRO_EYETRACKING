@@ -1,3 +1,7 @@
+'''
+Capture Face Step 2 ---recognize faces with static images Written by Tab Jun.27 2017
+'''
+
 import numpy as np
 import cv2
 
