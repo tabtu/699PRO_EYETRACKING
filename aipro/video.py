@@ -30,7 +30,6 @@ Keys:
 '''
 
 # Python 2/3 compatibility
-from __future__ import print_function
 
 import numpy as np
 from numpy import pi, sin, cos
@@ -196,34 +195,3 @@ def create_capture(source = 0, fallback = presets['chess']):
         if fallback is not None:
             return create_capture(fallback, None)
     return cap
-
-if __name__ == '__main__':
-    import sys
-    import getopt
-
-    print(__doc__)
-
-    args, sources = getopt.getopt(sys.argv[1:], '', 'shotdir=')
-    args = dict(args)
-    shotdir = args.get('--shotdir', '.')
-    if len(sources) == 0:
-        sources = [ 0 ]
-
-    caps = list(map(create_capture, sources))
-    shot_idx = 0
-    while True:
-        imgs = []
-        for i, cap in enumerate(caps):
-            ret, img = cap.read()
-            imgs.append(img)
-            cv2.imshow('capture %d' % i, img)
-        ch = cv2.waitKey(1)
-        if ch == 27:
-            break
-        if ch == ord(' '):
-            for i, img in enumerate(imgs):
-                fn = '%s/shot_%d_%03d.bmp' % (shotdir, i, shot_idx)
-                cv2.imwrite(fn, img)
-                print(fn, 'saved')
-            shot_idx += 1
-    cv2.destroyAllWindows()

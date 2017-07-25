@@ -1,7 +1,7 @@
-#!/usr/bin/env python
 '''
 Capture Faces Version 1.1 Written by Tab Jul.1 2017
 '''
+
 from __future__ import print_function
 
 import numpy as np
@@ -44,10 +44,12 @@ if __name__ == '__main__':
 
     while True:
         ret, img = cam.read()
+
+        #gray = img
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         gray = cv2.equalizeHist(gray)
 
-        t = clock()
+        #t = clock()
         rects = detect(gray, cascade)
         vis = img.copy()
         draw_rects(vis, rects, (0, 255, 0))

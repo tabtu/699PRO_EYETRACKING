@@ -1,11 +1,9 @@
-#!/usr/bin/env python
-
 '''
 This module contains some common routines used by other samples.
 '''
 
 # Python 2/3 compatibility
-from __future__ import print_function
+
 import sys
 PY3 = sys.version_info[0] == 3
 
@@ -109,7 +107,6 @@ class Sketcher:
             self.dirty = True
             self.prev_pt = pt
             self.show()
-
 
 # palette data from matplotlib/_cm.py
 _jet_data =   {'red':   ((0., 0, 0), (0.35, 0, 0), (0.66, 1, 1), (0.89,1, 1),

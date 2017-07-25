@@ -1,9 +1,8 @@
-#!/usr/bin/env python
 '''
-Capture Faces Version 1.1 Written by Tab Jul.1 2017
+Capture Faces Updated by Tab Jul.25 2017
 '''
-from __future__ import print_function
 
+from __future__ import print_function
 import numpy as np
 import cv2
 from PIL import Image
@@ -22,6 +21,8 @@ def detect(img, cascade):
 def draw_rects(img, rects, color):
     for x1, y1, x2, y2 in rects:
         cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(img,'tab',(x1,y1), font, 4,(255,255,255),2,cv2.LINE_AA)
 
 if __name__ == '__main__':
     import sys, getopt
@@ -45,7 +46,7 @@ if __name__ == '__main__':
         rects = detect(gray, cascade)
 
         vis = img.copy()
-        draw_rects(vis, rects, (0, 255, 0))
+        draw_rects(vis, rects, (255, 255, 0))
 
         print(rects)
 
@@ -55,7 +56,6 @@ if __name__ == '__main__':
             cv2.imshow('face', roi)
 
         cv2.imwrite("videocap.jpg", vis)
-
 
         cv2.imshow('facedetect', vis)
 

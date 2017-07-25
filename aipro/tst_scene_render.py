@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
+'''
+Time render
+'''
 
 # Python 2/3 compatibility
-from __future__ import print_function
 
 import numpy as np
 from numpy import pi, sin, cos
@@ -94,23 +96,3 @@ class TestSceneRender():
 
     def resetTime(self):
         self.time = 0.0
-
-
-if __name__ == '__main__':
-
-    backGr = cv2.imread('../data/graf1.png')
-    fgr = cv2.imread('../data/box.png')
-
-    render = TestSceneRender(backGr, fgr)
-
-    while True:
-
-        img = render.getNextFrame()
-        cv2.imshow('img', img)
-
-        ch = cv2.waitKey(3)
-        if  ch == 27:
-            break
-    #import os
-    #print (os.environ['PYTHONPATH'])
-    cv2.destroyAllWindows()

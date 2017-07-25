@@ -5,7 +5,7 @@ This module contains some common routines used by other samples.
 '''
 
 # Python 2/3 compatibility
-from __future__ import print_function
+
 import sys
 PY3 = sys.version_info[0] == 3
 
