@@ -1,4 +1,4 @@
-Capture Faces Version 1.1 Written by Tab Jul.1 2017
+Capture Faces Version 1.3 Written by Tab Aug 2017
 
 
 
