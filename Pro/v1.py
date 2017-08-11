@@ -11,10 +11,8 @@ import cv2
 from video import create_capture
 from common import clock, draw_str
 
-
 def detect(img, cascade):
-    rects = cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(20, 20),
-                                     flags=cv2.CASCADE_SCALE_IMAGE)
+    rects = cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=6, minSize=(20, 20), flags=cv2.CASCADE_SCALE_IMAGE)
     if len(rects) == 0:
         return []
     rects[:,2:] += rects[:,:2]

@@ -109,9 +109,9 @@ def Hamming_distance(hash1,hash2):
 
 
 if __name__ == '__main__':
-    img1 = cv2.imread('test.jpg')
+    img1 = cv2.imread('joe.jpg')
     cv2.imshow('img1',img1)
-    img2 = cv2.imread('videocap.jpg')
+    img2 = cv2.imread('faces.jpg')
     cv2.imshow('img2',img2)
     degree1 = classify_gray_hist(img1,img2)
     degree2 = classify_hist_with_split(img1,img2)
