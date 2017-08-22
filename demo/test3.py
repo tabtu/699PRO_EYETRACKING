@@ -5,7 +5,7 @@ import os
 import cv2
 
 def detect_object(image):
-    '''检测图片，获取人脸在图片中的坐标'''
+    '''dect'''
     grayscale = cv2.CreateImage((image.width, image.height), 8, 1)
     cv2.CvtColor(image, grayscale, cv2.CV_BGR2GRAY)
 
@@ -20,7 +20,7 @@ def detect_object(image):
     return result
 
 def process(infile):
-    '''在原图上框出头像并且截取每个头像到单独文件夹'''
+    '''draw rects and save in folder'''
     image = cv2.imread(infile);
     #if image:
     faces = detect_object(image)
