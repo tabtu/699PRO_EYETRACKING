@@ -36,7 +36,7 @@ from numpy import pi, sin, cos
 import cv2
 
 # built-in modules
-from time import clock
+# from time import clock
 
 # local modules
 from tst_scene_render import TestSceneRender
